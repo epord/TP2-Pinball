@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public string BallResetKey;
     private Vector3 resPos;
-    private Door door;
+    public Vector3 initialVelocity;
+    private Rigidbody rigidbody;
+
 
     void Start ()
     {
         resPos = transform.position;
-        door = GameObject.Find("Map/Door").GetComponent<Door>();
+        this.rigidbody = this.GetComponent<Rigidbody>();
+        this.rigidbody.velocity = initialVelocity;
+        //door = GameObject.Find("Map/Door").GetComponent<Door>();
     }
 	
 	void Update ()
@@ -23,14 +28,20 @@ public class Ball : MonoBehaviour
 
         // Close the door when lauching is down, open it for new launch
         // USE POSITION, 3.5 IS JUST AN APPORXIMATION FOR THE TEST
-        if (transform.position.x >= -3.5 && door.opened)
-        {
-            door.Close();
+
+        if (Input.GetButton(BallResetKey)) {
+            transform.position = resPos;
+            this.rigidbody.velocity = initialVelocity;
+
         }
-        else if (transform.position.x < -3.5 && !door.opened)
-        {
-            door.Open();
-        }
+        //if (transform.position.x >= -3.5 && door.opened)
+        //{
+        //    door.Close();
+        //}
+        //else if (transform.position.x < -3.5 && !door.opened)
+        //{
+        //    door.Open();
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
