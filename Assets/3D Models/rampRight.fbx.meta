@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: 0382fecaf619a458781a64a1780a2384
+guid: b8d5d33aecb4d47d1ae0a3a6cb888c72
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: ramp
-    100002: ramp_collision
-    100004: //RootNode
-    400000: ramp
-    400002: ramp_collision
-    400004: //RootNode
+    100000: //RootNode
+    100002: rampRight
+    100004: rampRight_collision
+    400000: //RootNode
+    400002: rampRight
+    400004: rampRight_collision
     2100000: No Name
-    2300000: ramp
-    2300002: ramp_collision
-    3300000: ramp
-    3300002: ramp_collision
-    4300000: ramp_collision
-    4300002: ramp
+    2300000: rampRight
+    2300002: rampRight_collision
+    3300000: rampRight
+    3300002: rampRight_collision
+    4300000: rampRight
+    4300002: rampRight_collision
   externalObjects: {}
   materials:
     importMaterials: 1
