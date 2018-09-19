@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public string BallResetKey;
+    public string BallResetKey = "ResetBallKey";
     private Vector3 resPos;
     public Vector3 initialVelocity;
     private Rigidbody rigidbody;
