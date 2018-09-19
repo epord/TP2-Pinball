@@ -18,6 +18,7 @@ public class Launcher : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             rb.AddForce(0, launchSpeed, 0, ForceMode.Impulse);
+            launchSpeed = 0.0f;
         }
 
         if (Input.GetKey(KeyCode.Space))
