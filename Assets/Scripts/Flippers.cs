@@ -3,31 +3,31 @@
 public class Flippers : MonoBehaviour
 {
     private HingeJoint m_hingeJoint;
-    private JointSpring m_jointSpring;
-    private float springForce = 750.0f;
-    private float springDamper = 1.0f;
-    private float restPosition = 0.0f;
-    public float activePosition;
+    public float ActivePosition;
+    public float RestPosition;
     public string flipperInputKey;
+    public float angularVelocity;
 
 	void Start ()
     {
         m_hingeJoint = GetComponent<HingeJoint>();
-        m_jointSpring = new JointSpring();
-        m_jointSpring.spring = springForce;
-        m_jointSpring.damper = springDamper;
     }
-	
+
 	void Update ()
     {
 		if (Input.GetAxis(flipperInputKey) == 1)
         {
-            m_jointSpring.targetPosition = activePosition;
+            Debug.Log("ASDASD");
+            var hinge = m_hingeJoint.spring;
+            hinge.targetPosition = ActivePosition;
+            m_hingeJoint.spring = hinge;
         }
         else
         {
-            m_jointSpring.targetPosition = restPosition;
+            var hinge = m_hingeJoint.spring;
+            hinge.targetPosition = RestPosition;
+            m_hingeJoint.spring = hinge;
+
         }
-        m_hingeJoint.spring = m_jointSpring;
 	}
 }

@@ -2,19 +2,28 @@
 
 public class Launcher : MonoBehaviour
 {
-    private float launchSpeed = -1000.0f;
+    public float launchSpeed = 0.0f;
+    public GameObject lauchedObject;
     private Rigidbody rb;
+    public float maxLaunchSpeed = 0.2f;
+    public float step = 0.001f;
 
-	void Start ()
+	private void Start()
+	{
+        rb = lauchedObject.GetComponent<Rigidbody>();
+	}
+
+	void Update ()
     {
-        rb = GetComponent<Rigidbody>();
-    }
-	
-	void FixedUpdate ()
-    {
-		if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            rb.AddForce(0, 0, launchSpeed, ForceMode.Impulse);
+            rb.AddForce(0, launchSpeed, 0, ForceMode.Impulse);
+            launchSpeed = 0.0f;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            launchSpeed = launchSpeed + step > maxLaunchSpeed ? maxLaunchSpeed : launchSpeed + step;
         }
 	}
 }
