@@ -14,8 +14,8 @@ ModelImporter:
     2300002: rampLeft_collision
     3300000: rampLeft
     3300002: rampLeft_collision
-    4300000: rampLeft_collision
-    4300002: rampLeft
+    4300000: rampLeft
+    4300002: rampLeft_collision
   externalObjects: {}
   materials:
     importMaterials: 1
