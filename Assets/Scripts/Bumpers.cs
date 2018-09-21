@@ -7,16 +7,19 @@ public class Bumpers : MonoBehaviour {
     public Material onHitMaterial;
     private Renderer m_renderer;
     private float scale = 0.1F;
+    private SoundsManager soundsManager;
 
     private void Start()
     {
         m_renderer = GetComponent<Renderer>();
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ball")
         {
+            soundsManager.PlayBumper1();
             AnimateBumperOnCollision();            
         }
     }
