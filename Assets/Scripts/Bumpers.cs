@@ -2,7 +2,6 @@
 
 public class Bumpers : MonoBehaviour {
 
-    public float bumpForce;
     public Material defaultMaterial;
     public Material onHitMaterial;
     private Renderer m_renderer;
@@ -13,9 +12,9 @@ public class Bumpers : MonoBehaviour {
         m_renderer = GetComponent<Renderer>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.name == "Ball")
+        if (collider.name == "ball")
         {
             AnimateBumperOnCollision();            
         }
@@ -29,13 +28,13 @@ public class Bumpers : MonoBehaviour {
 
     private void GrowBumper()
     {
-        transform.localScale += new Vector3(scale, scale, scale);
+        transform.localScale += scale * transform.localScale;
         m_renderer.material = defaultMaterial;
     }
 
     private void ShortBumper()
     {
         m_renderer.material = onHitMaterial;
-        transform.localScale -= new Vector3(scale, scale, scale);
+        transform.localScale -= scale * transform.localScale;
     }
 }

@@ -17,7 +17,6 @@ public class Flippers : MonoBehaviour
     {
 		if (Input.GetAxis(flipperInputKey) == 1)
         {
-            Debug.Log("ASDASD");
             var hinge = m_hingeJoint.spring;
             hinge.targetPosition = ActivePosition;
             m_hingeJoint.spring = hinge;

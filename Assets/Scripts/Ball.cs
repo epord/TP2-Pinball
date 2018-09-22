@@ -43,15 +43,4 @@ public class Ball : MonoBehaviour
         //    door.Open();
         //}
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Bumper")
-        {
-            float bumpForce = collision.gameObject.GetComponent<Bumpers>().bumpForce;
-            Vector3 dir = transform.position - collision.transform.position;
-            dir.Normalize();
-            GetComponent<Rigidbody>().AddForce(dir * bumpForce);
-        }
-    }
 }
