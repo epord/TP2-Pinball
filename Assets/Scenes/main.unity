@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980ea830aeab36e4a90851caa1705b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkFrequence: 10
   light_1: {fileID: 1593727507}
   light_2: {fileID: 1617459788}
   light_3: {fileID: 1576256764}
