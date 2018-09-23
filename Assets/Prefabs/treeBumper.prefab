@@ -204,4 +204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a411e952c626e284691217ff4b7c01ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Impulse: 1
+  Impulse: 0.5
