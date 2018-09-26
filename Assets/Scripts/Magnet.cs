@@ -16,7 +16,7 @@ public class Magnet : MonoBehaviour
     private float activationTime;
     private float m_time = 0f;
     private GameObject ball;
-    private float magnetForce = 25f;
+    public float magnetForce = 25f;
 
     void Start ()
     {

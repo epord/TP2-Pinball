@@ -2340,6 +2340,7 @@ MonoBehaviour:
   activated: 0
   attractMaterial: {fileID: 2100000, guid: 7d0053dfe780bd04c9fcf71a54bdc910, type: 2}
   repulseMaterial: {fileID: 2100000, guid: 6a61f61711339884b8cebce2bf6f07b1, type: 2}
+  magnetForce: 50
 --- !u!1001 &1348181051
 Prefab:
   m_ObjectHideFlags: 0
