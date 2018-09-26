@@ -7,6 +7,7 @@ public class Bumpers : MonoBehaviour {
     private Renderer m_renderer;
     private float scale = 0.1F;
     private SoundsManager soundsManager;
+    
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class Bumpers : MonoBehaviour {
         if (collider.name == "ball")
         {
             soundsManager.PlayBumper1();
-            AnimateBumperOnCollision();            
+            AnimateBumperOnCollision();     
         }
     }
         

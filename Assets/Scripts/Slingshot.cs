@@ -5,20 +5,16 @@ using UnityEngine;
 public class Slingshot : MonoBehaviour {
 	public float Impulse;
 	public Vector3 direction;
+	private ScoreManager scoreManager;
 	// Use this for initialization
 	void Start () {
-		
+		scoreManager = ScoreManager.GetInstance();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	void OnTriggerEnter(Collider collider) {
 		if (collider.name == "ball") {
 			var ball = collider.GetComponent<Rigidbody>();
 			ball.AddForce(direction.normalized * Impulse , ForceMode.Impulse);
+			scoreManager.AddScore(ScoreManager.SLINGSHOT_SCORE);
 		}
 	}
 }
