@@ -4,18 +4,11 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: table
-    100004: table_collision
     400000: //RootNode
-    400002: table
-    400004: table_collision
-    2100000: Material.001
-    2300000: table
-    2300002: table_collision
-    3300000: table
-    3300002: table_collision
-    4300000: table_collision
-    4300002: table
+    2100000: TableSkin
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: table
   externalObjects: {}
   materials:
     importMaterials: 1
