@@ -7,11 +7,13 @@ public class Launcher : MonoBehaviour
     private Rigidbody rb;
     public float maxLaunchSpeed = 0.2f;
     public float step = 0.001f;
+    private SoundsManager soundsManager;
 
 	private void Start()
 	{
         rb = lauchedObject.GetComponent<Rigidbody>();
-	}
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+    }
 
 	void Update ()
     {
@@ -19,6 +21,7 @@ public class Launcher : MonoBehaviour
         {
             rb.AddForce(0, launchSpeed, 0, ForceMode.Impulse);
             launchSpeed = 0.0f;
+            soundsManager.PlayLauncher();
         }
 
         if (Input.GetKey(KeyCode.Space))
