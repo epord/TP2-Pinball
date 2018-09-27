@@ -12,7 +12,6 @@ public class TreeBumper : MonoBehaviour
     void Start ()
     {
         m_renderer = transform.parent.gameObject.GetComponentInChildren<Renderer>();
-            // Get the one from the other child of the parent GetComponent<Renderer>();
         soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
     }
 	

@@ -4,63 +4,70 @@ using UnityEngine;
 
 public class LightsManager : MonoBehaviour
 {
-    public float blinkFrequence = 10f;
+    public float blinkFrequence = 5f;
     private List<GameObject> lights;
-    private IEnumerator coroutine;
+    //private IEnumerator coroutine;
 
     //All lights
-    public GameObject light_1;
-    public GameObject light_2;
-    public GameObject light_3;
-    public GameObject light_4;
+    public List<GameObject> skyLights;
+    public List<GameObject> centerLights;
+    public List<GameObject> launcherLights;
 
 	void Start ()
     {
-        lights = new List<GameObject>();
-        lights.Add(light_1);
-        lights.Add(light_2);
-        lights.Add(light_3);
-        lights.Add(light_4);
-        //RandomBlink(blinkFrequence, 10f, this.lights);
-        //Blink(blinkFrequence, 10f, this.lights);
-        //BottomToTopBlink(blinkFrequence, 10f, this.lights);
-        //SwitchOn(10f, this.lights);
+        foreach(Transform child in GameObject.Find("SkyLights").transform)
+        {
+            skyLights.Add(child.gameObject);
+        }
+        foreach(Transform child in GameObject.Find("CenterLights").transform)
+        {
+            centerLights.Add(child.gameObject);
+        }
+        foreach (Transform child in GameObject.Find("LauncherLights").transform)
+        {
+            launcherLights.Add(child.gameObject);
+        }
+        RandomBlink(5f, 100000f, skyLights);
+        BottomToTopBlink(5f, 100000f, skyLights);
+        TopToBottomBlink(10f, 100000f, centerLights);
+        BottomToTopBlink(10f, 100000f, centerLights);
+        RandomBlink(5f, 100000f, centerLights);
     }
 
     public void Blink(float frequence, float endTime, List<GameObject> lights)
     {
-        coroutine = Blink(1f / frequence, endTime, lights, true);
+        IEnumerator coroutine = Blink(1f / frequence, endTime, lights, true);
         StartCoroutine(coroutine);
     }
 
     public void RandomBlink(float frequence, float endTime, List<GameObject> lights)
     {
-        coroutine = RandomBlink(1f / frequence, endTime, lights, true);
+        IEnumerator coroutine = RandomBlink(1f / frequence, endTime, lights, true);
         StartCoroutine(coroutine);
     }
 
     public void BottomToTopBlink(float frequence, float endTime, List<GameObject> lights)
     {
-        coroutine = BottomToTopBlink(1f / frequence, endTime, lights, true);
+        IEnumerator coroutine = BottomToTopBlink(1f / frequence, endTime, lights, true);
         StartCoroutine(coroutine);
     }
 
-    public void SwitchOn(float endTime, List<GameObject> lights)
+    public void TopToBottomBlink(float frequence, float endTime, List<GameObject> lights)
     {
-        coroutine = SwitchOn(endTime, lights, true);
+        IEnumerator coroutine = TopToBottomBlink(1f / frequence, endTime, lights, true);
         StartCoroutine(coroutine);
     }
 
-    public IEnumerator SwitchOn(float endTime, List<GameObject> lights, bool arg)
+    public void SwitchOn(List<GameObject> lights)
     {
         foreach (GameObject obj in lights)
         {
             SwitchOn(obj);
         }
-        while (Time.time < endTime)
-        {
-            yield return new WaitForSeconds(1f);
-        }
+    }
+
+    public void SwitchOff(List<GameObject> lights)
+    {
         foreach (GameObject obj in lights)
         {
             SwitchOff(obj);
@@ -76,6 +83,19 @@ public class LightsManager : MonoBehaviour
                 SwitchOn(obj);
                 yield return new WaitForSeconds(waitTime);
                 SwitchOff(obj);
+            }
+        }
+    }
+
+    private IEnumerator TopToBottomBlink(float waitTime, float endTime, List<GameObject> lights, bool arg)
+    {
+        while (Time.time < endTime)
+        {
+            for (int i = lights.Count - 1; i >= 0; i--)
+            {
+                SwitchOn(lights[i]);
+                yield return new WaitForSeconds(waitTime);
+                SwitchOff(lights[i]);
             }
         }
     }
@@ -122,6 +142,7 @@ public class LightsManager : MonoBehaviour
             }
             yield return new WaitForSeconds(waitTime);
         }
+        yield break;
     }
 
     public void SwitchOn(GameObject obj)
