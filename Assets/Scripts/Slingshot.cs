@@ -11,7 +11,7 @@ public class Slingshot : MonoBehaviour {
 		scoreManager = ScoreManager.GetInstance();
 	}
 	void OnTriggerEnter(Collider collider) {
-		if (collider.name == "ball") {
+		if (collider.tag == "Ball") {
 			var ball = collider.GetComponent<Rigidbody>();
 			ball.AddForce(direction.normalized * Impulse , ForceMode.Impulse);
 			scoreManager.AddScore(ScoreManager.SLINGSHOT_SCORE);

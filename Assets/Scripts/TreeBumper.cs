@@ -8,7 +8,7 @@ public class TreeBumper : MonoBehaviour
     public Material onHitMaterial;
     private Renderer m_renderer;
     private float scale = 0.1F;
-
+    private ScoreManager _scoreManager = ScoreManager.GetInstance();
     void Start ()
     {
         m_renderer = transform.parent.gameObject.GetComponentInChildren<Renderer>();
@@ -19,11 +19,13 @@ public class TreeBumper : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
     {
-		if (collision.collider.name == "ball") {
+		if (collision.collider.tag == "Ball") {
 			var ball = collision.collider.GetComponent<Rigidbody>();
 			ball.AddForce(collision.contacts[0].normal * Impulse, ForceMode.Impulse);
             soundsManager.PlayBumper2();
             AnimateBumperOnCollision();
+
+            _scoreManager.AddScore(ScoreManager.TARGET_SCORE);
         }
 	}
 

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class RampEntryTrigger : MonoBehaviour
 {
+    private MissionManager _missionManager;
     private ScoreManager _scoreManager = ScoreManager.GetInstance();
+
+    public void Start() {
+        _missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
+    }
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Ball")
@@ -19,6 +25,7 @@ public class RampEntryTrigger : MonoBehaviour
            ball.velocity = new Vector3(0.0f, 2.0f, 0.0f);
 
            _scoreManager.AddScore(ScoreManager.RAMP_SCORE);
+           _missionManager.Process(MissionManager.MissionEvent.RAMP_TAKEN);
         }
     }
 }
