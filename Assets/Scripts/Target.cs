@@ -13,7 +13,7 @@ public class Target : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		if (collider.name == "ball") {
+		if (collider.tag == "Ball") {
 			Vector3 pos = transform.localPosition;
 			pos.x = 0;
 			_isDown = true;

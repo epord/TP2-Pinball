@@ -17,7 +17,7 @@ public class Bumpers : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.name == "ball")
+        if (collider.tag == "Ball")
         {
             soundsManager.PlayBumper1();
             AnimateBumperOnCollision();     

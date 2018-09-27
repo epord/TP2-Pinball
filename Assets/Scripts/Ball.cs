@@ -5,16 +5,16 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public string BallResetKey = "ResetBallKey";
-    private Vector3 resPos;
+    public Vector3 resPos;
     public Vector3 initialVelocity;
-    private Rigidbody rigidbody;
+    private Rigidbody _rigidBody;
 
 
     void Start ()
     {
         resPos = transform.position;
-        this.rigidbody = this.GetComponent<Rigidbody>();
-        this.rigidbody.velocity = initialVelocity;
+        _rigidBody = GetComponent<Rigidbody>();
+        _rigidBody.velocity = initialVelocity;
         //door = GameObject.Find("Map/Door").GetComponent<Door>();
     }
 	
@@ -30,9 +30,7 @@ public class Ball : MonoBehaviour
         // USE POSITION, 3.5 IS JUST AN APPORXIMATION FOR THE TEST
 
         if (Input.GetButton(BallResetKey)) {
-            transform.position = resPos;
-            this.rigidbody.velocity = initialVelocity;
-
+            ResetPosition();
         }
         //if (transform.position.x >= -3.5 && door.opened)
         //{
@@ -42,5 +40,10 @@ public class Ball : MonoBehaviour
         //{
         //    door.Open();
         //}
+    }
+
+    public void ResetPosition() {
+        transform.position = resPos;
+        _rigidBody.velocity = initialVelocity;
     }
 }

@@ -22,7 +22,7 @@ public class Spinner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		if (collider.name == "ball") {
+		if (collider.tag == "Ball") {
 			var ball = collider.GetComponent<Rigidbody>();
 			currSpeed = ball.velocity.magnitude * RotationSpeed;
 		}
