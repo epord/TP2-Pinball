@@ -19,6 +19,7 @@ public class ScoreManager {
 	private static ScoreManager instance;
 
 	private long _score;
+    private static int _highScore;
 	private ScoreManager(){}
 
 	public static ScoreManager GetInstance()
@@ -26,14 +27,22 @@ public class ScoreManager {
 		if (instance == null){
 			instance = new ScoreManager();
 		}
+        _highScore = PlayerPrefs.GetInt("highScore", _highScore);
+        Debug.Log(_highScore);
 		return instance;
 	}
 	
 	public void AddScore(long score) {
 		_score += score;
+        if (_score > _highScore)
+        {
+            _highScore = (int)_score;
+            PlayerPrefs.SetInt("highScore", _highScore);
+        }
 	}
 
 	public long GetScore() {
+        Debug.Log(_score);
 		return _score;
 	}
 }
