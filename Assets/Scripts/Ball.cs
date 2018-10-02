@@ -6,9 +6,9 @@ public class Ball : MonoBehaviour
 {
     public string BallResetKey = "ResetBallKey";
     public Vector3 resPos;
+
     public Vector3 initialVelocity;
     private Rigidbody _rigidBody;
-
 
     void Start ()
     {
@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
         // Close the door when lauching is down, open it for new launch
         // USE POSITION, 3.5 IS JUST AN APPORXIMATION FOR THE TEST
 
-        if (Input.GetButton(BallResetKey)) {
+        if (!_rigidBody.isKinematic && Input.GetButton(BallResetKey)) {
             ResetPosition();
         }
         //if (transform.position.x >= -3.5 && door.opened)
