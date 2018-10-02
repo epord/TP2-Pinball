@@ -3,6 +3,7 @@
 public class SoundsManager : MonoBehaviour
 {
     public AudioSource audioSource;
+    public AudioSource backgroundAudioSource;
 
     public AudioClip Alarm_1;
     public AudioClip Alarm_2;
@@ -18,6 +19,24 @@ public class SoundsManager : MonoBehaviour
     public AudioClip FlipperDown;
     public AudioClip MapStart;
     public AudioClip Launcher;
+    public AudioClip ButtonHover;
+    public AudioClip ButtonClick;
+    public AudioClip RickAndMortyTheme;
+
+    private void Start()
+    {
+        backgroundAudioSource.priority = 255;
+        backgroundAudioSource.spatialBlend = 0.55f;
+        audioSource.priority = 0;
+    }
+
+    public void PlayRickAndMortyTheme()
+    {
+        backgroundAudioSource.loop = true;
+        backgroundAudioSource.clip = RickAndMortyTheme;
+        backgroundAudioSource.volume = 0.5f;
+        backgroundAudioSource.Play();
+    }
 
     public void PlayAlarm1 ()
     {
@@ -87,5 +106,15 @@ public class SoundsManager : MonoBehaviour
     public void PlayLauncher()
     {
         audioSource.PlayOneShot(Launcher);
+    }
+
+    public void PlayButtonHover()
+    {
+        audioSource.PlayOneShot(ButtonHover);
+    }
+
+    public void PlayButtonClick()
+    {
+        audioSource.PlayOneShot(ButtonClick);
     }
 }

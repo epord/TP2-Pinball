@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4729284694950816}
   - component: {fileID: 114538082824939510}
   - component: {fileID: 82444017709005426}
+  - component: {fileID: 82804349483063346}
   m_Layer: 0
   m_Name: SoundsManager
   m_TagString: Untagged
@@ -136,6 +137,101 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &82804349483063346
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853640307795460}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114538082824939510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82444017709005426}
+  backgroundAudioSource: {fileID: 82804349483063346}
   Alarm_1: {fileID: 8300000, guid: 9915eac4bed8337479caaf8f6a52a282, type: 3}
   Alarm_2: {fileID: 8300000, guid: b919715c892cefa479cfc15d4f513a6c, type: 3}
   Alarm_3: {fileID: 8300000, guid: 85c68bbc4ced3674a8ce2beeaef69202, type: 3}
@@ -162,3 +259,6 @@ MonoBehaviour:
   FlipperDown: {fileID: 8300000, guid: 17e907df3ad737e4497b15c680a12aad, type: 3}
   MapStart: {fileID: 8300000, guid: d75ce58b5dfb0944ab08cb14f4cbb934, type: 3}
   Launcher: {fileID: 8300000, guid: 3a9a1a5e0cf185540a4009154bc84754, type: 3}
+  ButtonHover: {fileID: 8300000, guid: 04c37720ebd00f94db6e3b29285efafe, type: 3}
+  ButtonClick: {fileID: 8300000, guid: 745212f4de0999345a00ee5f0e181854, type: 3}
+  RickAndMortyTheme: {fileID: 8300000, guid: 1132d5315aa495c4d81a7de770cf5b5e, type: 3}

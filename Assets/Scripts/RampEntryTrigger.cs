@@ -20,7 +20,7 @@ public class RampEntryTrigger : MonoBehaviour
             Debug.Log(ball.position);
             Debug.Log(ball.velocity);
 
-           var newPosition = new Vector3(0.2113f, 0.4152f, 0.0021f);
+            var newPosition = new Vector3(0.2224f, 0.4206f, 0.007f);
            ball.position = newPosition;
            ball.velocity = new Vector3(0.0f, 2.0f, 0.0f);
 

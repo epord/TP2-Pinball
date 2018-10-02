@@ -6,7 +6,6 @@ public class LightsManager : MonoBehaviour
 {
     public float blinkFrequence = 5f;
     private List<GameObject> lights;
-    //private IEnumerator coroutine;
 
     //All lights
     public List<GameObject> skyLights;

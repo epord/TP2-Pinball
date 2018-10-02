@@ -1,48 +1,81 @@
 ﻿using UnityEngine;
 
-public class GUIMenu : MonoBehaviour {
-
-    private bool mainMenu;
-    private bool play;
-    private bool highScores;
+public class GUIMenu : MonoBehaviour
+{
+    private bool mainMenu = true;
+    private bool play = false;
+    private bool highScores = false;
+    private bool controls = false;
     public GUISkin skin;
+    private SoundsManager soundsManager;
 
     // UI variables
-    private float buttonWidth;
-    private float buttonHeight;
-    private float menuWidth;
-    private float menuHeight;
+    public float menuCoordX = 0.5f;
+    public float menuCoordY = 0.5f;
+    public float menuWidth = 0.3f;
+    public float menuHeight = 0.9f;
+    public float buttonWidth = 0.4f;
+    public float buttonHeight = 0.15f;
+    public float allButtonsPosX = 0.3f;
+    public float firstButtonPosY = 0.2f;
+    public float secondButtonPosY = 0.4f;
+    public float thirdButtonPosY = 0.6f;
 
-	void Start () {
-        mainMenu = true;
-	}
+    private void Start()
+    {
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+        soundsManager.PlayRickAndMortyTheme();
+    }
 
     private void OnGUI()
     {
         GUI.skin = skin;
-        GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.8f, Screen.height * 0.8f), "");
+        GUI.Box(new Rect(Screen.width * menuCoordX, Screen.height * menuCoordY, Screen.width * menuWidth, Screen.height * menuHeight), "");
 
         if (mainMenu)
         {
-            // Screen background : Rick & Morty Picture with no text on it // 
-            if (GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.3f, Screen.width * 0.4f, Screen.height * 0.2f), "Play"))
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Play","Play")))
             {
                 mainMenu = false;
                 play = true;
+                soundsManager.PlayButtonClick();
+                Application.LoadLevel("GravityTest");
             }
-            if (GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.6f, Screen.width * 0.4f, Screen.height * 0.2f), "HighScores"))
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * secondButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("HighScores", "HighScores")))
             {
                 mainMenu = false;
                 highScores = true;
+                soundsManager.PlayButtonClick();
+            }
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * thirdButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Controls", "Controls")))
+            {
+                mainMenu = false;
+                controls = true;
+                soundsManager.PlayButtonClick();
             }
         }
         else if (highScores)
         {
-            if (GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.6f, Screen.width * 0.4f, Screen.height * 0.2f), "Return"))
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * thirdButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Return", "Return")))
             {
                 mainMenu = true;
                 highScores = false;
+                soundsManager.PlayButtonClick();
             }
+        }
+        else if (controls)
+        {
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * thirdButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Return", "Return")))
+            {
+                mainMenu = true;
+                controls = false;
+                soundsManager.PlayButtonClick();
+            }
+            GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
+                "Flipper Left : F \n" +
+                "Flipper Right : J \n" +
+                "Reset ball : R \n" +
+                "Launch Ball : Space \n");
         }
     }
 

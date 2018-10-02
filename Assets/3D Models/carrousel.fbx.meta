@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 938cd05f0f09d9244ac6f98fc84443a7
+guid: 26b7466ae3f5440d98279b2b9736bea7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: BezierCurve.004
+    4300000: Cylinder
   externalObjects: {}
   materials:
     importMaterials: 1
