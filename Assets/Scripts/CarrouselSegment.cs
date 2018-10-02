@@ -24,7 +24,7 @@ public class CarrouselSegment : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		if (collider.name == "ball" && !_hit) {
+		if (collider.tag == "Ball" && !_hit) {
 			_renderer.material = HitMaterial;
 			_hit = true;
 			_scoreManager.AddScore(ScoreManager.CARROUSEL_SEGMENT_SCORE);

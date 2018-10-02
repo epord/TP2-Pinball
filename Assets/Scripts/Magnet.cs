@@ -22,7 +22,6 @@ public class Magnet : MonoBehaviour
     {
         nextActivation = Random.Range(nextActivationMin, nextActivationMax);
         activationTime = m_activationTime;
-        ball = GameObject.Find("ball");
         m_renderer = GetComponent<Renderer>();
         m_renderer.enabled = false;
     }
@@ -56,29 +55,30 @@ public class Magnet : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "ball")
+        if (other.tag == "Ball")
         {
+            var ball = other.GetComponent<Rigidbody>();
             if (repulse)
             {
-                Repulse();
+                Repulse(ball);
             }
             else if (attract)
             {
-                Attract();
+                Attract(ball);
             }
         }
     }
 
-    private void Repulse()
+    private void Repulse(Rigidbody ball)
     {
-        Vector3 dir = ball.GetComponent<Transform>().position - GetComponent<Transform>().position;
-        ball.GetComponent<Rigidbody>().AddForce(dir.x * magnetForce, dir.y * magnetForce, 0, ForceMode.Force);
+        Vector3 dir = ball.transform.position -transform.position;
+        ball.AddForce(dir.x * magnetForce, dir.y * magnetForce, 0, ForceMode.Force);
     }
 
-    private void Attract()
+    private void Attract(Rigidbody ball)
     {
-        Vector3 dir = GetComponent<Transform>().position - ball.GetComponent<Transform>().position;
-        ball.GetComponent<Rigidbody>().AddForce(dir.x * magnetForce, dir.y * magnetForce, 0, ForceMode.Force);
+        Vector3 dir = transform.position - ball.transform.position;
+        ball.AddForce(dir.x * magnetForce, dir.y * magnetForce, 0, ForceMode.Force);
     }
 
     private void ActivateRandomState()

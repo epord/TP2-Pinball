@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Carrousel : MonoBehaviour {
 	private CarrouselSegment[] _segments;
+	private MissionManager _missionManager;
 	private ScoreManager _scoreManager = ScoreManager.GetInstance();
 	// Use this for initialization
 	void Start () {
 		_segments = GetComponentsInChildren<CarrouselSegment>();
+		_missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,7 @@ public class Carrousel : MonoBehaviour {
 		}
 		if (allAreLit) {
 			_scoreManager.AddScore(ScoreManager.CARROUSEL_FULL_SCORE);
+			_missionManager.Process(MissionManager.MissionEvent.WHEEL_FILL);
 			foreach(var segment in _segments) {
 				segment.Reset();
 			} 

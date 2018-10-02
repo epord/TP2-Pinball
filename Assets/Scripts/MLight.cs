@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-public class MLight : MonoBehaviour {
+public class MLight : MonoBehaviour
+{
 
     public bool enable;
-    //public bool randomBlinkingState;
 
-	void Start () {
+	void Start ()
+    {
         enable = false;
-        //randomBlinkingState = false;
 	}
 
     private void Update()
     {
-        gameObject.GetComponent<Light>().enabled = enable; 
+        gameObject.GetComponent<Renderer>().enabled = enable; 
     }
 
     public void SwitchOn()
@@ -24,6 +24,4 @@ public class MLight : MonoBehaviour {
     {
         enable = false;
     }
-
-
 }

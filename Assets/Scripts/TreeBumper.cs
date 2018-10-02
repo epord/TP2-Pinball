@@ -1,23 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TreeBumper : MonoBehaviour {
+public class TreeBumper : MonoBehaviour
+{
 	public float Impulse;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private SoundsManager soundsManager;
+    public Material defaultMaterial;
+    public Material onHitMaterial;
+    private Renderer m_renderer;
+    private float scale = 0.1F;
+    private ScoreManager _scoreManager = ScoreManager.GetInstance();
+    void Start ()
+    {
+        m_renderer = transform.parent.gameObject.GetComponentInChildren<Renderer>();
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.collider.name == "ball") {
+	void OnCollisionEnter(Collision collision)
+    {
+		if (collision.collider.tag == "Ball") {
 			var ball = collision.collider.GetComponent<Rigidbody>();
 			ball.AddForce(collision.contacts[0].normal * Impulse, ForceMode.Impulse);
-		}
+            soundsManager.PlayBumper2();
+            AnimateBumperOnCollision();
+
+            _scoreManager.AddScore(ScoreManager.TARGET_SCORE);
+        }
 	}
+
+    private void AnimateBumperOnCollision()
+    {
+        ShortBumper();
+        Invoke("GrowBumper", 0.1F);
+    }
+
+    private void GrowBumper()
+    {
+        transform.parent.localScale += scale * transform.parent.localScale;
+        m_renderer.material = defaultMaterial;
+    }
+
+    private void ShortBumper()
+    {
+        m_renderer.material = onHitMaterial;
+        transform.parent.localScale -= scale * transform.parent.localScale;
+    }
 }

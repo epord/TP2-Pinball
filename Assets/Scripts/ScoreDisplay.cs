@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class ScoreDisplay : MonoBehaviour {
 	private TextMeshProUGUI _scoreText;
-	private ScoreManager _scoreManager;
+	private ScoreManager _scoreManager = ScoreManager.GetInstance();
+	private long _oldScore;
 
 	// Use this for initialization
 	void Start () {
 		_scoreText = GetComponent<TextMeshProUGUI>();
-		_scoreManager = ScoreManager.GetInstance();
+		_oldScore = _scoreManager.GetScore();
+		_scoreText.SetText(_oldScore.ToString());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		_scoreText.SetText(_scoreManager.GetScore().ToString());
+		if (_scoreManager.GetScore() != _oldScore) {
+			_oldScore = _scoreManager.GetScore();
+			_scoreText.SetText(_oldScore.ToString());
+		}
 	}
 }
