@@ -52,6 +52,7 @@ public class BallManager : MonoBehaviour {
         _ballsLeft--;
         if (BallsLeft()) {
             AquireBall();
+            Debug.Log("AquireBall");
         }
     }
 
