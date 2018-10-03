@@ -52,4 +52,9 @@ public class ScoreManager {
 	public long GetScore() {
 		return _score;
 	}
+
+    public void ResetScore()
+    {
+        _score = 0;
+    }
 }

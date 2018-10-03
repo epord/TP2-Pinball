@@ -8,7 +8,8 @@ public class GUIMenu : MonoBehaviour
     private bool controls = false;
     public GUISkin skin;
     private SoundsManager soundsManager;
-    private GameManager gameManager;
+    private const string HIGHSCORE = "highScore";
+    private int _highScore;
 
     // UI variables
     public float menuCoordX = 0.5f;
@@ -25,7 +26,6 @@ public class GUIMenu : MonoBehaviour
     private void Start()
     {
         soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         soundsManager.PlayRickAndMortyTheme();
     }
 
@@ -58,9 +58,10 @@ public class GUIMenu : MonoBehaviour
         }
         else if (highScores)
         {
+            PlayerPrefs.GetInt(HIGHSCORE, _highScore);
             GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
-                "Current highscore is : \n" +
-                gameManager.GetHighScore());
+                "Current highscore is  \n" +
+                _highScore);
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * thirdButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Return", "Return")))
             {
                 mainMenu = true;

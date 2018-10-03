@@ -56,6 +56,7 @@ public class PauseManager : MonoBehaviour
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * secondButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Menu", "Menu")))
             {
                 soundsManager.PlayButtonClick();
+                Time.timeScale = 1;
                 Application.LoadLevel("MenuTests");
             }
         }

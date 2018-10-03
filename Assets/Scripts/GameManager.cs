@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
         //ResetHighScore();
         _highScore = PlayerPrefs.GetInt(HIGHSCORE, _highScore);
         scoreManager = ScoreManager.GetInstance();
+        scoreManager.ResetScore();
         soundManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
-        ballManager = GameObject.Find("BallManager").GetComponent<BallManager>();
+        ballManager = FindObjectOfType<BallManager>();
         gameOverManager = GetComponent<GameOverManager>();
         soundManager.PlayRickAndMortyTheme();
     }
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        soundManager.PlayBallLoss();
+        soundManager.PlayAlarm4();
         gameOverManager.isGameOver = true;
     }
 
