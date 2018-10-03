@@ -27,10 +27,12 @@ public class MissionManager: MonoBehaviour{
 	private int _missionCount;
 	private ScoreManager _scoreManager = ScoreManager.GetInstance();
 	private int _multiballCount;
+    private LightsManager _lightsManager;
 	
 	void Start() {
 		_currentState = MissionState.LAUNCHING;
-		_ballManager = FindObjectOfType<BallManager>();
+        _ballManager = FindObjectOfType<BallManager>();
+        _lightsManager = FindObjectOfType<LightsManager>();
 	}
 
 	public void Process(MissionEvent ev) {
@@ -38,15 +40,18 @@ public class MissionManager: MonoBehaviour{
 		switch(_currentState) {
 			case MissionState.LAUNCHING:
 				if (ev == MissionEvent.LAUNCHED) {
-					_currentState = MissionState.SPIN_WHEEL;
+                    _currentState = MissionState.SPIN_WHEEL;
+                    _lightsManager.SetWheelMission();
 				}
 				break;
 			case MissionState.SPIN_WHEEL:
 				if (ev == MissionEvent.WHEEL_FILL) {
 					if (Random.value < 0.5) {
-						_currentState = MissionState.TAKE_RAMP;
+                        _currentState = MissionState.TAKE_RAMP;
+                        _lightsManager.SetRampMission();
 					} else {
-						_currentState = MissionState.HIT_TARGETS;
+                        _currentState = MissionState.HIT_TARGETS;
+                        _lightsManager.SetTargetsMission();
 					}
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
@@ -57,7 +62,8 @@ public class MissionManager: MonoBehaviour{
 				break;
 			case MissionState.TAKE_RAMP:
 				if (ev == MissionEvent.RAMP_TAKEN) {
-					_currentState = MissionState.LOCK_BALL;
+                    _currentState = MissionState.LOCK_BALL;
+                    _lightsManager.SetLockMission();
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
 				if (ev == MissionEvent.BALL_LOST) {
@@ -67,7 +73,8 @@ public class MissionManager: MonoBehaviour{
 				break;
 			case MissionState.HIT_TARGETS:
 				if (ev == MissionEvent.TARGET_FILL) {
-					_currentState = MissionState.LOCK_BALL;
+                    _currentState = MissionState.LOCK_BALL;
+                    _lightsManager.SetLockMission();
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
 				if (ev == MissionEvent.BALL_LOST) {
@@ -95,7 +102,8 @@ public class MissionManager: MonoBehaviour{
 				if (ev == MissionEvent.BALL_LOST) {
 					_multiballCount--;
 					if (_multiballCount == 1) {
-						_currentState = MissionState.SPIN_WHEEL;
+                        _currentState = MissionState.SPIN_WHEEL;
+                        _lightsManager.SetWheelMission();
 					}
 				}
 				break;

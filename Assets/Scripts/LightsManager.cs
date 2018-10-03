@@ -13,6 +13,10 @@ public class LightsManager : MonoBehaviour
     public List<GameObject> launcherLights;
     public List<GameObject> rampLights1;
     public List<GameObject> rampLights2;
+    public List<GameObject> wheelArrows;
+    public GameObject rampArrow;
+    public GameObject lockArrow;
+    public GameObject targetsArrow;
 
 	void Start ()
     {
@@ -36,6 +40,7 @@ public class LightsManager : MonoBehaviour
         {
             rampLights2.Add(child.gameObject);
         }
+                   
         RandomBlink(5f, 100000f, skyLights);
         BottomToTopBlink(5f, 100000f, skyLights);
         TopToBottomBlink(10f, 100000f, centerLights);
@@ -199,5 +204,49 @@ public class LightsManager : MonoBehaviour
         {
             launcherLights[i].GetComponent<MLight>().SwitchOff();
         }
+    }
+
+    public void SetWheelMission()
+    {
+        foreach (GameObject arrow in wheelArrows)
+        {
+            arrow.GetComponent<ArrowLight>().TurnOn();
+        }
+        lockArrow.GetComponent<ArrowLight>().TurnOff();
+        lockArrow.GetComponent<ArrowLight>().TurnOff();
+        rampArrow.GetComponent<ArrowLight>().TurnOff();
+    }
+
+    public void SetRampMission()
+    {
+        foreach (GameObject arrow in wheelArrows)
+        {
+            arrow.GetComponent<ArrowLight>().TurnOff();
+        }
+        targetsArrow.GetComponent<ArrowLight>().TurnOff();
+        lockArrow.GetComponent<ArrowLight>().TurnOff();
+        rampArrow.GetComponent<ArrowLight>().TurnOn();
+    }
+
+    public void SetLockMission()
+    {
+        foreach (GameObject arrow in wheelArrows)
+        {
+            arrow.GetComponent<ArrowLight>().TurnOff();
+        }
+        targetsArrow.GetComponent<ArrowLight>().TurnOff();
+        lockArrow.GetComponent<ArrowLight>().TurnOn();
+        rampArrow.GetComponent<ArrowLight>().TurnOff();
+    }
+
+    public void SetTargetsMission()
+    {
+        foreach (GameObject arrow in wheelArrows)
+        {
+            arrow.GetComponent<ArrowLight>().TurnOff();
+        }
+        targetsArrow.GetComponent<ArrowLight>().TurnOn();
+        lockArrow.GetComponent<ArrowLight>().TurnOff();
+        rampArrow.GetComponent<ArrowLight>().TurnOff();
     }
 }

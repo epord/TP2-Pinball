@@ -14,6 +14,7 @@ public class RampEntryTrigger : MonoBehaviour
     public void Start() {
         _missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
         lightsManager = GameObject.Find("LightsManager").GetComponent<LightsManager>();
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
         rampLights1 = lightsManager.rampLights1;
         rampLights2 = lightsManager.rampLights2;
     }
