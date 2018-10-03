@@ -10,17 +10,18 @@ public class Retainer : MonoBehaviour
     private SoundsManager soundsManager;
 	private MissionManager _missionManager;
 	private Queue<Rigidbody> _lockedBalls;
-	public GameObject BallPrefab;
+	private BallManager _ballManager;
 	void Start()
 	{
 		soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
 		_missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
 		_lockedBalls = new Queue<Rigidbody>();
+		_ballManager = FindObjectOfType<BallManager>();
 	}
 
 	void NewBall() {
 		// TODO: Launch a new ball.
-		var newBall = Instantiate(BallPrefab);
+		var newBall = _ballManager.AquireBall();
 	}
 
 	void ReleaseBall()
@@ -61,7 +62,7 @@ public class Retainer : MonoBehaviour
     {
         var ball = _lockedBalls.Dequeue();
         ball.isKinematic = false;
-        retainedBall.AddForce(ForceDirection.normalized * Impulse, ForceMode.VelocityChange);
+        ball.AddForce(ForceDirection.normalized * Impulse, ForceMode.VelocityChange);
     }
 
 }

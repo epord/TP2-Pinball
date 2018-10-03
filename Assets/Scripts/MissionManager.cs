@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MissionManager: MonoBehaviour{
 	public enum MissionEvent {
+		BALL_LOST,
+		LAUNCHED,
 		WHEEL_FILL,
 		TARGET_FILL,
 		RAMP_TAKEN,
-		BALL_LOCKED,
-		TIMER_DONE,
+		BALL_LOCKED
 	}
 
 	public enum MissionState {
+		LAUNCHING,
 		SPIN_WHEEL,
 		TAKE_RAMP,
 		HIT_TARGETS,
@@ -20,20 +22,25 @@ public class MissionManager: MonoBehaviour{
 	}
 
 	private MissionState _currentState;
+	private BallManager _ballManager;
 	public int MissionsRequired;
 	private int _missionCount;
 	private ScoreManager _scoreManager = ScoreManager.GetInstance();
+	private int _multiballCount;
 	
 	void Start() {
-		_currentState = MissionState.SPIN_WHEEL;
-	}
-
-	void SendTimerDone() {
-		Process(MissionEvent.TIMER_DONE);
+		_currentState = MissionState.LAUNCHING;
+		_ballManager = FindObjectOfType<BallManager>();
 	}
 
 	public void Process(MissionEvent ev) {
+
 		switch(_currentState) {
+			case MissionState.LAUNCHING:
+				if (ev == MissionEvent.LAUNCHED) {
+					_currentState = MissionState.SPIN_WHEEL;
+				}
+				break;
 			case MissionState.SPIN_WHEEL:
 				if (ev == MissionEvent.WHEEL_FILL) {
 					if (Random.value < 0.5) {
@@ -43,11 +50,19 @@ public class MissionManager: MonoBehaviour{
 					}
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
+				if (ev == MissionEvent.BALL_LOST) {
+					_currentState = MissionState.LAUNCHING;
+					_ballManager.LoseBall();
+				}
 				break;
 			case MissionState.TAKE_RAMP:
 				if (ev == MissionEvent.RAMP_TAKEN) {
 					_currentState = MissionState.LOCK_BALL;
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
+				}
+				if (ev == MissionEvent.BALL_LOST) {
+					_currentState = MissionState.LAUNCHING;
+					_ballManager.LoseBall();
 				}
 				break;
 			case MissionState.HIT_TARGETS:
@@ -55,23 +70,33 @@ public class MissionManager: MonoBehaviour{
 					_currentState = MissionState.LOCK_BALL;
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
+				if (ev == MissionEvent.BALL_LOST) {
+					_currentState = MissionState.LAUNCHING;
+					_ballManager.LoseBall();
+				}
 				break;
 			case MissionState.LOCK_BALL:
 				if (ev == MissionEvent.BALL_LOCKED) {
 					_missionCount++;
 					if (_missionCount == MissionsRequired) {
 						_currentState = MissionState.MULTIBALL;
-						Invoke("SendTimerDone", 60f);
+						_multiballCount = 3;
 					} else {
-						_currentState = MissionState.SPIN_WHEEL;
+						_currentState = MissionState.LAUNCHING;
 					}
 					_scoreManager.AddScore(ScoreManager.MISSION_SCORE);
 				}
+				if (ev == MissionEvent.BALL_LOST) {
+					_currentState = MissionState.LAUNCHING;
+					_ballManager.LoseBall();
+				}
 				break;
 			case MissionState.MULTIBALL:
-				if (ev == MissionEvent.TIMER_DONE) {
-					_missionCount = 0;
-					_currentState = MissionState.SPIN_WHEEL;
+				if (ev == MissionEvent.BALL_LOST) {
+					_multiballCount--;
+					if (_multiballCount == 1) {
+						_currentState = MissionState.SPIN_WHEEL;
+					}
 				}
 				break;
 		}
@@ -87,6 +112,8 @@ public class MissionManager: MonoBehaviour{
 
 	public string GetMissionText() {
 		switch (_currentState) {
+			case MissionState.LAUNCHING:
+				return "Launch the ball";
 			case MissionState.SPIN_WHEEL:
 				return "Spin the wheel";
 			case MissionState.TAKE_RAMP:

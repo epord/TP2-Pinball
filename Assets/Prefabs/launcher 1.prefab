@@ -52,5 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 0
-  maxLaunchSpeed: 0.01
-  step: 0.005
+  maxLaunchSpeed: 100
+  step: 10
