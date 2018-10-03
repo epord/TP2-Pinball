@@ -6,9 +6,25 @@ public class RampEntryTrigger : MonoBehaviour
 {
     private MissionManager _missionManager;
     private ScoreManager _scoreManager = ScoreManager.GetInstance();
+    private LightsManager lightsManager;
+    private SoundsManager soundsManager;
+    private List<GameObject> rampLights1;
+    private List<GameObject> rampLights2;
 
     public void Start() {
         _missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
+        lightsManager = GameObject.Find("LightsManager").GetComponent<LightsManager>();
+        soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+        rampLights1 = lightsManager.rampLights1;
+        rampLights2 = lightsManager.rampLights2;
+    }
+
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            lightsManager.BlinkRamp(0.2f, rampLights1);
+            lightsManager.BlinkRamp(0.2f, rampLights2);
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -26,6 +42,9 @@ public class RampEntryTrigger : MonoBehaviour
 
            _scoreManager.AddScore(ScoreManager.RAMP_SCORE);
            _missionManager.Process(MissionManager.MissionEvent.RAMP_TAKEN);
+            lightsManager.BlinkRamp(0.2f, rampLights1);
+            lightsManager.BlinkRamp(0.2f, rampLights2);
+            soundsManager.PlayAlarm2();
         }
     }
 }

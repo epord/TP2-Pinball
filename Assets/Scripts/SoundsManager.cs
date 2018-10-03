@@ -55,7 +55,9 @@ public class SoundsManager : MonoBehaviour
 
     public void PlayAlarm4 ()
     {
+        audioSource.volume = 0.2f;
         audioSource.PlayOneShot(Alarm_4);
+        audioSource.volume = 1;
     }
 
     public void PlayBonus1 ()

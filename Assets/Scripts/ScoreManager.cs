@@ -29,8 +29,6 @@ public class ScoreManager {
 		if (instance == null){
 			instance = new ScoreManager();
 		}
-        //_highScore = PlayerPrefs.GetInt("highScore", _highScore);
-        //Debug.Log(_highScore);
 		return instance;
 	}
 	
@@ -52,7 +50,6 @@ public class ScoreManager {
 	}
 
 	public long GetScore() {
-        //Debug.Log(_score);
 		return _score;
 	}
 }
