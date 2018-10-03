@@ -4442,6 +4442,7 @@ MonoBehaviour:
   TotalBallCount: 3
   BallPrefab: {fileID: 114317350650476560, guid: 368471d6ebf292b4892d3c9962dbdfa3,
     type: 2}
+  _ballsLeft: 0
 --- !u!1 &805755017
 GameObject:
   m_ObjectHideFlags: 0
