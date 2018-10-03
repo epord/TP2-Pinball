@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        soundManager.PlayAlarm4();
+        soundManager.PlayWablaDubDub();
         gameOverManager.isGameOver = true;
     }
 

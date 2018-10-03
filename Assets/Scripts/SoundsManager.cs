@@ -22,6 +22,8 @@ public class SoundsManager : MonoBehaviour
     public AudioClip ButtonHover;
     public AudioClip ButtonClick;
     public AudioClip RickAndMortyTheme;
+    public AudioClip GoodJob;
+    public AudioClip WablaDubDub;
 
     private void Start()
     {
@@ -30,11 +32,21 @@ public class SoundsManager : MonoBehaviour
         audioSource.priority = 0;
     }
 
+    public void PlayWablaDubDub()
+    {
+        audioSource.PlayOneShot(WablaDubDub);
+    }
+
+    public void PlayGoodJob()
+    {
+        audioSource.PlayOneShot(GoodJob);
+    }
+
     public void PlayRickAndMortyTheme()
     {
         backgroundAudioSource.loop = true;
         backgroundAudioSource.clip = RickAndMortyTheme;
-        backgroundAudioSource.volume = 0.5f;
+        backgroundAudioSource.volume = 0.3f;
         backgroundAudioSource.Play();
     }
 

@@ -23,7 +23,7 @@ public class NewHighScoreDisplay : MonoBehaviour
 		if (gameManager.newHighScore && !playedOnce)
         {
             _text.enabled = true;
-            soundsManager.PlayAlarm4();
+            soundsManager.PlayGoodJob();
             playedOnce = true;
         }
 	}
