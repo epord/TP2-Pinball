@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676287520958382}
   m_LocalRotation: {x: -0.13240825, y: 0.2017889, z: 0.7288879, w: 0.64068073}
-  m_LocalPosition: {x: -0.046, y: 0.19962758, z: 0.00083742297}
+  m_LocalPosition: {x: -0.33486003, y: -0.42126092, z: 0.027660452}
   m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children: []
   m_Father: {fileID: 0}
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallResetKey: ResetBallKey
-  resPos: {x: 0, y: 0.2, z: 0}
-  initialVelocity: {x: 0, y: 2, z: 0}
+  resPos: {x: -0.34, y: -0.4, z: 0.03}
+  initialVelocity: {x: 0, y: 0, z: 0}
 --- !u!135 &135143346960970294
 SphereCollider:
   m_ObjectHideFlags: 1

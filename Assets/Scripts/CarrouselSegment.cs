@@ -7,8 +7,8 @@ public class CarrouselSegment : MonoBehaviour {
 	// Use this for initialization
 	private Renderer _renderer;
 	private ScoreManager _scoreManager = ScoreManager.GetInstance();
-	private bool _hit;
-	private Material _unLitMaterial;
+	public bool _hit;
+	public Material _unLitMaterial;
 	void Start () {
 		_renderer = GetComponent<Renderer>();
 		_unLitMaterial = _renderer.material;
