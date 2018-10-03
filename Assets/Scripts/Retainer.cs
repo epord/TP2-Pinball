@@ -9,20 +9,19 @@ public class Retainer : MonoBehaviour
 	private ScoreManager _scoreManager = ScoreManager.GetInstance();
     private SoundsManager soundsManager;
 	private MissionManager _missionManager;
-	private List<Rigidbody> _lockedBalls;
-	public GameObject BallPrefab;
+	private Queue<Rigidbody> _lockedBalls;
+	private BallManager _ballManager;
 	void Start()
 	{
 		soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
 		_missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
-		_lockedBalls = new List<Rigidbody>();
+		_lockedBalls = new Queue<Rigidbody>();
+		_ballManager = FindObjectOfType<BallManager>();
 	}
 
 	void NewBall() {
 		// TODO: Launch a new ball.
-
-		var newBall = Instantiate(BallPrefab);
-		var oldBall = retainedBall.GetComponent<Ball>();
+		var newBall = _ballManager.AquireBall();
 	}
 
 	void ReleaseBall()
@@ -42,11 +41,28 @@ public class Retainer : MonoBehaviour
 			if (_missionManager.GetCurrentState() == MissionManager.MissionState.LOCK_BALL) {
 				// Ball locked for multiball, launch a new ball
 				_missionManager.Process(MissionManager.MissionEvent.BALL_LOCKED);
-				_lockedBalls.Add(retainedBall);
-				Invoke("NewBall", 1f);
+				_lockedBalls.Enqueue(retainedBall);
+
+                if (_missionManager.GetCurrentState() == MissionManager.MissionState.MULTIBALL)
+                {
+                    Invoke("ReleaseRetainedBall", 1f);
+                    Invoke("ReleaseRetainedBall", 6f);
+                    Invoke("ReleaseRetainedBall", 11f);
+                } else
+                {
+                    Invoke("NewBall", 1f);
+                }
 			} else {
-				Invoke("ReleaseBall", 1f);
-			}
+                Invoke("ReleaseBall", 1f);
+            }
 		}
 	}
+
+    void ReleaseRetainedBall()
+    {
+        var ball = _lockedBalls.Dequeue();
+        ball.isKinematic = false;
+        ball.AddForce(ForceDirection.normalized * Impulse, ForceMode.VelocityChange);
+    }
+
 }

@@ -13,6 +13,7 @@ public class MissionDisplay : MonoBehaviour {
 		_missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
 		_missionText = GetComponent<TextMeshProUGUI>();
 		_oldState = _missionManager.GetCurrentState();
+		_missionText.SetText(_missionManager.GetMissionText());
 	}
 	
 	// Update is called once per frame

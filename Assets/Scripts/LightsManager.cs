@@ -176,4 +176,17 @@ public class LightsManager : MonoBehaviour
     {
         obj.GetComponent<MLight>().SwitchOff();
     }
+
+    public void SwitchLauncherLights(int lightsOn)
+    {
+        for (int i = 0; i < lightsOn; i++ )
+        {
+            launcherLights[i].GetComponent<MLight>().SwitchOn();
+        }
+
+        for (int i = lightsOn; i < launcherLights.Count; i++)
+        {
+            launcherLights[i].GetComponent<MLight>().SwitchOff();
+        }
+    }
 }

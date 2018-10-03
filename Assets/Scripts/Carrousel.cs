@@ -5,12 +5,13 @@ using UnityEngine;
 public class Carrousel : MonoBehaviour {
 	private CarrouselSegment[] _segments;
 	private MissionManager _missionManager;
-	private ScoreManager _scoreManager = ScoreManager.GetInstance();
+	private ScoreManager _scoreManager;
 	// Use this for initialization
 	void Start () {
 		_segments = GetComponentsInChildren<CarrouselSegment>();
 		_missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
-	}
+        _scoreManager = ScoreManager.GetInstance();
+    }
 	
 	// Update is called once per frame
 	void Update () {
