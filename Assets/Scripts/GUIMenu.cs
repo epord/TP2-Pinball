@@ -60,7 +60,8 @@ public class GUIMenu : MonoBehaviour
         {
             PlayerPrefs.GetInt(HIGHSCORE, _highScore);
             GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
-                "Current highscore is  \n" +
+                "Current highscore\n" +
+                " is\n" +
                 _highScore);
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * thirdButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Return", "Return")))
             {
