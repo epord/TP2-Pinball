@@ -52,8 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkFrequence: 10
-  light_1: {fileID: 0}
-  light_2: {fileID: 0}
-  light_3: {fileID: 0}
-  light_4: {fileID: 0}
   skyLights: []
+  centerLights: []
+  launcherLights: []
+  rampLights1: []
+  rampLights2: []
+  wheelArrows:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rampArrow: {fileID: 0}
+  lockArrow: {fileID: 0}
+  targetsArrow: {fileID: 0}

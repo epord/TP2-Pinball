@@ -77,10 +77,11 @@ public class GUIMenu : MonoBehaviour
                 soundsManager.PlayButtonClick();
             }
             GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
+                "\n" +
                 "Flipper Left : F \n" +
                 "Flipper Right : J \n" +
-                "Reset ball : R \n" +
-                "Launch Ball : Space \n");
+                "Launch Ball : Space \n" +
+                "Pause Game : P");
         }
     }
 

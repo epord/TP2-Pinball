@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseManager : MonoBehaviour
-{
-    private bool isGamePaused = false;
+public class GameOverManager : MonoBehaviour {
+
+    public bool isGameOver = false;
     private SoundsManager soundsManager;
 
     // UI variables
@@ -19,39 +19,24 @@ public class PauseManager : MonoBehaviour
     private float firstButtonPosY = 0.27f;
     private float secondButtonPosY = 0.47f;
 
-    void Start ()
+    void Start()
     {
         soundsManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
-	}
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!isGamePaused)
-            {
-                Time.timeScale = 0;
-                isGamePaused = true;
-            }
-            else if (isGamePaused)
-            {
-                Time.timeScale = 1;
-                isGamePaused = false;
-            }
-        }
     }
 
     private void OnGUI()
     {
-        if (isGamePaused)
+        if (isGameOver)
         {
+            Time.timeScale = 0;
             GUI.skin = skin;
-            GUI.Box(new Rect(Screen.width * menuCoordX, Screen.height * menuCoordY, Screen.width * menuWidth, Screen.height * menuHeight), "Pause");
-            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Resume", "Resume")))
+            GUI.Box(new Rect(Screen.width * menuCoordX, Screen.height * menuCoordY, Screen.width * menuWidth, Screen.height * menuHeight), "Game Over");
+            if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("New Game", "New Game")))
             {
                 soundsManager.PlayButtonClick();
                 Time.timeScale = 1;
-                isGamePaused = false;
+                isGameOver = false;
+                Application.LoadLevel("GravityTest");
             }
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * secondButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Menu", "Menu")))
             {

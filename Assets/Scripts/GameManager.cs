@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     private SoundsManager soundManager;
     public bool newHighScore = false;
     private BallManager ballManager;
-    private PauseManager pauseManager;
+    private GameOverManager gameOverManager;
+    private bool playedOnce = false;
 
 	void Start ()
     {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
         scoreManager = ScoreManager.GetInstance();
         soundManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
         ballManager = GameObject.Find("BallManager").GetComponent<BallManager>();
-        pauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
+        gameOverManager = GetComponent<GameOverManager>();
         soundManager.PlayRickAndMortyTheme();
     }
 	
@@ -35,17 +36,17 @@ public class GameManager : MonoBehaviour
                 newHighScore = true;
             }
         }
-        if (ballManager._ballsLeft < 0)
+        if (ballManager._ballsLeft <= 0 && !playedOnce)
         {
+            playedOnce = true;
             GameOver();
         }
     }
 
     private void GameOver()
     {
-        //Pausing with a different interface
-        pauseManager.firstButtonText = "New Game";
-        pauseManager.isGamePaused = true;
+        soundManager.PlayBallLoss();
+        gameOverManager.isGameOver = true;
     }
 
     private void OnDestroy()
