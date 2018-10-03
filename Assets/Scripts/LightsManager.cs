@@ -31,6 +31,29 @@ public class LightsManager : MonoBehaviour
         TopToBottomBlink(10f, 100000f, centerLights);
         BottomToTopBlink(10f, 100000f, centerLights);
         RandomBlink(5f, 100000f, centerLights);
+        BlinkRamp(0.5f, launcherLights);
+    }
+
+    public void BlinkRamp(float speed, List<GameObject> lights)
+    {       
+        IEnumerator coroutine = BlinkRamp(speed, lights, true);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator BlinkRamp(float speed, List<GameObject> lights, bool arg)
+    {
+        float duration = speed;
+        foreach (GameObject obj in lights)
+        {
+            SwitchOn(obj);
+            while (duration > 0)
+            {
+
+                duration -= Time.deltaTime;
+                yield return null;
+            }
+            duration = speed;
+        }
     }
 
     public void Blink(float frequence, float endTime, List<GameObject> lights)
