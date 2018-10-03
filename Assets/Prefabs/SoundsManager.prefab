@@ -262,3 +262,5 @@ MonoBehaviour:
   ButtonHover: {fileID: 8300000, guid: 04c37720ebd00f94db6e3b29285efafe, type: 3}
   ButtonClick: {fileID: 8300000, guid: 745212f4de0999345a00ee5f0e181854, type: 3}
   RickAndMortyTheme: {fileID: 8300000, guid: 1132d5315aa495c4d81a7de770cf5b5e, type: 3}
+  GoodJob: {fileID: 8300000, guid: 3199e645a27339c45948feaaafaf17b7, type: 3}
+  WablaDubDub: {fileID: 8300000, guid: 79af6c1b44414414f86efe4d8ac18f10, type: 3}

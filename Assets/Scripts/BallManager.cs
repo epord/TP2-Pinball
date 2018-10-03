@@ -7,7 +7,7 @@ public class BallManager : MonoBehaviour {
     public int TotalBallCount;
     public Ball BallPrefab;
     private Queue<Ball> _balls;
-    private int _ballsLeft;
+    public int _ballsLeft;
     private bool _newBall;
     private ScoreManager _scoreManager = ScoreManager.GetInstance();
 

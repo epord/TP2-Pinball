@@ -9,12 +9,20 @@ public class GameManager : MonoBehaviour
     private const string HIGHSCORE = "highScore";
     private ScoreManager scoreManager;
     private SoundsManager soundManager;
+    public bool newHighScore = false;
+    private BallManager ballManager;
+    private GameOverManager gameOverManager;
+    private bool playedOnce = false;
 
 	void Start ()
     {
+        //ResetHighScore();
         _highScore = PlayerPrefs.GetInt(HIGHSCORE, _highScore);
         scoreManager = ScoreManager.GetInstance();
+        scoreManager.ResetScore();
         soundManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+        ballManager = FindObjectOfType<BallManager>();
+        gameOverManager = GetComponent<GameOverManager>();
         soundManager.PlayRickAndMortyTheme();
     }
 	
@@ -24,7 +32,22 @@ public class GameManager : MonoBehaviour
         if (currentScore > _highScore)
         {
             _highScore = currentScore;
+            if (!newHighScore)
+            {
+                newHighScore = true;
+            }
         }
+        if (ballManager._ballsLeft <= 0 && !playedOnce)
+        {
+            playedOnce = true;
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        soundManager.PlayWablaDubDub();
+        gameOverManager.isGameOver = true;
     }
 
     private void OnDestroy()
@@ -35,5 +58,10 @@ public class GameManager : MonoBehaviour
     public int GetHighScore()
     {
         return _highScore;
+    }
+
+    private void ResetHighScore()
+    {
+        PlayerPrefs.SetInt(HIGHSCORE, 0);
     }
 }

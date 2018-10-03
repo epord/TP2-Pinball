@@ -9,58 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1407408235724258}
+  m_RootGameObject: {fileID: 1263987389909868}
   m_IsPrefabAsset: 1
---- !u!1 &1407408235724258
+--- !u!1 &1263987389909868
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4398797538937696}
-  - component: {fileID: 114263903211108444}
+  - component: {fileID: 4921799154772672}
+  - component: {fileID: 114932513437131642}
   m_Layer: 0
-  m_Name: LightsManager
+  m_Name: PauseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4398797538937696
+--- !u!4 &4921799154772672
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1407408235724258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22376618, y: 0.6773587, z: -0.6009215}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1263987389909868}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.05, y: 0.361, z: -0.019}
+  m_LocalScale: {x: 92.756996, y: 92.756996, z: 92.756996}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114263903211108444
+--- !u!114 &114932513437131642
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1407408235724258}
+  m_GameObject: {fileID: 1263987389909868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980ea830aeab36e4a90851caa1705b12, type: 3}
+  m_Script: {fileID: 11500000, guid: b3f213ba5f54d4f4a906ea7c3fb5ac1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkFrequence: 10
-  skyLights: []
-  centerLights: []
-  launcherLights: []
-  rampLights1: []
-  rampLights2: []
-  wheelArrows:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  rampArrow: {fileID: 0}
-  lockArrow: {fileID: 0}
-  targetsArrow: {fileID: 0}
+  skin: {fileID: 11400000, guid: f39f9b87993298444ae1ac6ab455c5d2, type: 2}
