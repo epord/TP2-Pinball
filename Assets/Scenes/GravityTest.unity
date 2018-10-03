@@ -3091,7 +3091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3066a5e8ccedda4997df1e1a8813450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallCount: 4
+  BallCount: 3
+  TotalBallCount: 3
   BallPrefab: {fileID: 114317350650476560, guid: 368471d6ebf292b4892d3c9962dbdfa3,
     type: 2}
 --- !u!1001 &806560261
@@ -6210,7 +6211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForceDirection: {x: 0.5, y: -1, z: 0}
   Impulse: 2
-  BallPrefab: {fileID: 1676287520958382, guid: 368471d6ebf292b4892d3c9962dbdfa3, type: 2}
 --- !u!1 &1954492519
 GameObject:
   m_ObjectHideFlags: 0
