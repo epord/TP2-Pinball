@@ -5,27 +5,35 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public static int _highScore;
+    private static int _highScore;
     private const string HIGHSCORE = "highScore";
     private ScoreManager scoreManager;
+    private SoundsManager soundManager;
 
 	void Start ()
     {
         _highScore = PlayerPrefs.GetInt(HIGHSCORE, _highScore);
         scoreManager = ScoreManager.GetInstance();
+        soundManager = GameObject.Find("SoundsManager").GetComponent<SoundsManager>();
+        soundManager.PlayRickAndMortyTheme();
     }
 	
 	void Update ()
     {
-		
-	}
+        int currentScore = (int)scoreManager.GetScore();
+        if (currentScore > _highScore)
+        {
+            _highScore = currentScore;
+        }
+    }
 
     private void OnDestroy()
     {
-        int currentScore = (int)scoreManager.GetScore();
-        if ( currentScore > _highScore)
-        {
-            PlayerPrefs.SetInt(HIGHSCORE, currentScore);
-        }
+        PlayerPrefs.SetInt(HIGHSCORE, _highScore);
+    }
+
+    public int GetHighScore()
+    {
+        return _highScore;
     }
 }
