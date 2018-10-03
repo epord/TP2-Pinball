@@ -895,7 +895,6 @@ GameObject:
   - component: {fileID: 165585227}
   - component: {fileID: 165585231}
   - component: {fileID: 165585230}
-  - component: {fileID: 165585229}
   - component: {fileID: 165585228}
   m_Layer: 0
   m_Name: WheelArrow2
@@ -930,20 +929,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &165585229
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 165585226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &165585230
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1130,7 +1115,6 @@ GameObject:
   - component: {fileID: 241689047}
   - component: {fileID: 241689051}
   - component: {fileID: 241689050}
-  - component: {fileID: 241689049}
   - component: {fileID: 241689048}
   m_Layer: 0
   m_Name: WheelArrow3
@@ -1165,20 +1149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &241689049
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241689046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &241689050
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4236,7 +4206,6 @@ GameObject:
   - component: {fileID: 812134017}
   - component: {fileID: 812134021}
   - component: {fileID: 812134020}
-  - component: {fileID: 812134019}
   - component: {fileID: 812134018}
   m_Layer: 0
   m_Name: rampArrow
@@ -4271,20 +4240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &812134019
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 812134016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &812134020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8162,7 +8117,6 @@ GameObject:
   - component: {fileID: 1822598554}
   - component: {fileID: 1822598558}
   - component: {fileID: 1822598557}
-  - component: {fileID: 1822598556}
   - component: {fileID: 1822598555}
   m_Layer: 0
   m_Name: lockArrow
@@ -8197,20 +8151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &1822598556
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822598553}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1822598557
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8296,7 +8236,6 @@ GameObject:
   - component: {fileID: 1881756550}
   - component: {fileID: 1881756554}
   - component: {fileID: 1881756553}
-  - component: {fileID: 1881756552}
   - component: {fileID: 1881756551}
   m_Layer: 0
   m_Name: WheelArrow1
@@ -8331,20 +8270,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &1881756552
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1881756549}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1881756553
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9005,7 +8930,6 @@ GameObject:
   - component: {fileID: 1997992675}
   - component: {fileID: 1997992679}
   - component: {fileID: 1997992678}
-  - component: {fileID: 1997992677}
   - component: {fileID: 1997992676}
   m_Layer: 0
   m_Name: targetsArrow
@@ -9040,20 +8964,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LitMaterial: {fileID: 2100000, guid: 8a7ea2122733644dc908f9ff1e11783b, type: 2}
   UnlitMaterial: {fileID: 2100000, guid: 0671a83a70dbf4b3c98c590f220ab8ca, type: 2}
---- !u!64 &1997992677
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997992674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1997992678
 MeshRenderer:
   m_ObjectHideFlags: 0
