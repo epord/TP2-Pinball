@@ -11,6 +11,8 @@ public class LightsManager : MonoBehaviour
     public List<GameObject> skyLights;
     public List<GameObject> centerLights;
     public List<GameObject> launcherLights;
+    public List<GameObject> rampLights1;
+    public List<GameObject> rampLights2;
 
 	void Start ()
     {
@@ -26,11 +28,43 @@ public class LightsManager : MonoBehaviour
         {
             launcherLights.Add(child.gameObject);
         }
+        foreach (Transform child in GameObject.Find("RampLights").transform)
+        {
+            rampLights1.Add(child.gameObject);
+        }
+        foreach (Transform child in GameObject.Find("RampLights2").transform)
+        {
+            rampLights2.Add(child.gameObject);
+        }
         RandomBlink(5f, 100000f, skyLights);
         BottomToTopBlink(5f, 100000f, skyLights);
         TopToBottomBlink(10f, 100000f, centerLights);
         BottomToTopBlink(10f, 100000f, centerLights);
         RandomBlink(5f, 100000f, centerLights);
+        BlinkRamp(0.5f, launcherLights);
+    }
+
+    public void BlinkRamp(float speed, List<GameObject> lights)
+    {       
+        IEnumerator coroutine = BlinkRamp(speed, lights, true);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator BlinkRamp(float speed, List<GameObject> lights, bool arg)
+    {
+        float duration = speed;
+        foreach (GameObject obj in lights)
+        {
+            SwitchOn(obj);
+            while (duration > 0)
+            {
+
+                duration -= Time.deltaTime;
+                yield return null;
+            }
+            duration = speed;
+        }
+        SwitchOff(lights);
     }
 
     public void Blink(float frequence, float endTime, List<GameObject> lights)
