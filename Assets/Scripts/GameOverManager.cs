@@ -43,7 +43,7 @@ public class GameOverManager : MonoBehaviour {
                 soundsManager.PlayButtonClick();
                 Time.timeScale = 1;
                 isGameOver = false;
-                Application.LoadLevel("MenuTests");
+                Application.LoadLevel("Menu");
             }
         }
     }
