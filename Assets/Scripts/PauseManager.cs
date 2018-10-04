@@ -57,7 +57,7 @@ public class PauseManager : MonoBehaviour
             {
                 soundsManager.PlayButtonClick();
                 Time.timeScale = 1;
-                Application.LoadLevel("MenuTests");
+                Application.LoadLevel("Menu");
             }
         }
     }

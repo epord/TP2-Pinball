@@ -36,7 +36,7 @@ public class GameOverManager : MonoBehaviour {
                 soundsManager.PlayButtonClick();
                 Time.timeScale = 1;
                 isGameOver = false;
-                Application.LoadLevel("GravityTest");
+                Application.LoadLevel("MainScene");
             }
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * secondButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("Menu", "Menu")))
             {
