@@ -58,7 +58,7 @@ public class GUIMenu : MonoBehaviour
         }
         else if (highScores)
         {
-            PlayerPrefs.GetInt(HIGHSCORE, _highScore);
+            _highScore = PlayerPrefs.GetInt(HIGHSCORE);
             GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
                 "Current highscore\n" +
                 " is\n" +
@@ -79,10 +79,10 @@ public class GUIMenu : MonoBehaviour
                 soundsManager.PlayButtonClick();
             }
             GUI.Label(new Rect(Screen.width * allButtonsPosX, Screen.height * firstButtonPosY, Screen.width * buttonWidth, Screen.height * 3 * buttonHeight),
-                "\n" +
-                "Flipper Left : F \n" +
-                "Flipper Right : J \n" +
-                "Launch Ball : Space \n" +
+                "New Life : R\n" +
+                "Flipper Left : F\n" +
+                "Flipper Right : J\n" +
+                "Launch Ball : Space\n" +
                 "Pause Game : P");
         }
     }

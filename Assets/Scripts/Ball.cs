@@ -24,10 +24,6 @@ public class Ball : MonoBehaviour
 
         // Close the door when lauching is down, open it for new launch
         // USE POSITION, 3.5 IS JUST AN APPORXIMATION FOR THE TEST
-
-        if (!_rigidBody.isKinematic && Input.GetButton(BallResetKey)) {
-            ResetPosition();
-        }
     }
 
     public void ResetPosition() {

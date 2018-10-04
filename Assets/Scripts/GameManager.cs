@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
             playedOnce = true;
             GameOver();
         }
+
+        if (Input.GetKeyDown(KeyCode.R)){
+            scoreManager.AddScore(ScoreManager.SCORE_FOR_NEW_BALL);
+        }
     }
 
     private void GameOver()
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt(HIGHSCORE, _highScore);
+        Debug.Log(PlayerPrefs.GetInt(HIGHSCORE));
     }
 
     public int GetHighScore()
