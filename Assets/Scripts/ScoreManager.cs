@@ -53,8 +53,8 @@ public class ScoreManager {
 		return _score;
 	}
 
-    public void ResetScore()
-    {
-        _score = 0;
-    }
+	public void ResetScore()
+	{
+			_score = 0;
+	}
 }

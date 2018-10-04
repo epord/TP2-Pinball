@@ -41,7 +41,7 @@ public class GUIMenu : MonoBehaviour
                 mainMenu = false;
                 play = true;
                 soundsManager.PlayButtonClick();
-                Application.LoadLevel("GravityTest");
+                Application.LoadLevel("MainScene");
             }
             if (GUI.Button(new Rect(Screen.width * allButtonsPosX, Screen.height * secondButtonPosY, Screen.width * buttonWidth, Screen.height * buttonHeight), new GUIContent("HighScore", "HighScore")))
             {
